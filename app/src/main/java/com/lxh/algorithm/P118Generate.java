@@ -29,7 +29,13 @@ import java.util.List;
 
 public class P118Generate {
     public static void main(String[] args) {
-        generate(5);
+        List<List<Integer>> generate = generate(5);
+        for (List<Integer> list : generate) {
+            for (Integer integer : list) {
+                System.out.print(integer);
+            }
+            System.out.println("");
+        }
     }
 
     public static List<List<Integer>> generate(int numRows) {

@@ -2,6 +2,8 @@ package com.lxh.algorithm;
 
 import com.lxh.algorithm.bean.ListNode;
 
+import java.util.Arrays;
+
 public class Utils {
     public static ListNode arrayToListNode(int[] arrays) {
         ListNode root = new ListNode(arrays[0]);
@@ -23,4 +25,15 @@ public class Utils {
             l = l.next;
         }
     }
+
+    public static void swap(int[] arrays, int begin, int end) {
+        int temp = arrays[begin];
+        arrays[begin] = arrays[end];
+        arrays[end] = temp;
+    }
+
+    public static void print(int[] arrays) {
+        System.out.println(Arrays.toString(arrays));
+    }
 }
+

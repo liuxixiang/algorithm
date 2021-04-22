@@ -37,16 +37,19 @@ public class P704BinarySearch {
         System.out.println(search);
     }
 
-    public static int search(int[] nums, int target) {
-        int left = 0, right = nums.length - 1;
-        while (left <= right) {
-            int mid = left + (right - left) / 2;
-            if (nums[mid] == target) {
-                return mid;
-            } else if (nums[mid] > target) {
-                right = mid - 1;
+    public static int search(int[] arrays, int target) {
+        if (arrays == null || arrays.length == 0) {
+            return -1;
+        }
+        int begin = 0, end = arrays.length;
+        while (begin < end) {
+            int mid = (begin + end) >> 1;
+            if (target < arrays[mid]) {
+                end = mid;
+            } else if (target > arrays[mid]) {
+                begin = mid + 1;
             } else {
-                left = mid + 1;
+                return mid;
             }
         }
         return -1;

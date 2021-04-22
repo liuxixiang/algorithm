@@ -3,7 +3,7 @@ package com.lxh.algorithm.sort;
 import java.util.Arrays;
 
 public class Sort {
-    private static int[] arrays = {8, 7, 3, 9, 2, 0, 6, 1};
+    private static int[] arrays = {8, 7, 3, 9, 2, 5, 4, 0, 6, 9, 7, 5, 6, 1};
 
     public static void main(String[] args) {
         print(bubbleSort(arrays));
@@ -38,14 +38,14 @@ public class Sort {
      * @return
      */
     public static int[] selectSort(int[] arrays) {
-        int max = 0;
         for (int end = arrays.length - 1; end > 0; end--) {
+            int maxIndex = 0;
             for (int begin = 1; begin <= end; begin++) {
-                if (arrays[begin] > arrays[begin - 1]) {
-                    max = begin;
+                if (arrays[maxIndex] < arrays[begin]) {
+                    maxIndex = begin;
                 }
             }
-            swap(arrays, max, end);
+            swap(arrays, maxIndex, end);
         }
         return arrays;
     }

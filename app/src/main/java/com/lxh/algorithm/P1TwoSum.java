@@ -47,7 +47,7 @@ public class P1TwoSum {
     };
 
     public static void main(String[] args) {
-        int[] ints = twoSum(nums, 9);
+        int[] ints = twoSum1(nums, 18);
         for (int anInt : ints) {
             System.out.println(anInt);
         }
@@ -62,6 +62,18 @@ public class P1TwoSum {
             map.put(nums[i], i);
         }
         return new int[]{0, 0};
+    }
 
+    public static int[] twoSum1(int[] nums, int target) {
+       HashMap<Integer,Integer> map = new HashMap<>();
+        for (int i = 0; i < nums.length; i++) {
+            if(map.containsKey(target-nums[i])) {
+                return new int[] {
+                        i,map.get(target-nums[i])
+                };
+            }
+            map.put(nums[i],i);
+        }
+        return new int[]{};
     }
 }

@@ -29,17 +29,27 @@ public class P344ReverseString {
     };
 
     public static void main(String[] args) {
-        String s = reverseString(P344ReverseString.s);
+        String s = reverseString1(P344ReverseString.s);
         System.out.println(s);
     }
 
 
     /**
      * 双指针
+     *
      * @param s
      * @return
      */
     public static String reverseString(char[] s) {
+        for (int i = 0, j = s.length - 1; i < j; i++, j--) {
+            char temp = s[i];
+            s[i] = s[j];
+            s[j] = temp;
+        }
+        return new String(s);
+    }
+
+    public static String reverseString1(char[] s) {
         for (int i = 0, j = s.length - 1; i < j; i++, j--) {
             char temp = s[i];
             s[i] = s[j];

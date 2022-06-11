@@ -2,11 +2,13 @@ package com.lxh.algorithm.sort;
 
 import com.lxh.algorithm.Utils;
 
+import okhttp3.internal.Util;
+
 public class QuickSort {
     private static int[] arrays = {8, 7, 3, 9, 2, 0, 6, 1};
 
     public static void main(String[] args) {
-        quickSort(0, arrays.length);
+        quickSort1(0, arrays.length);
         Utils.print(arrays);
     }
 
@@ -19,10 +21,9 @@ public class QuickSort {
      */
     public static void quickSort(int begin, int end) {
         if (end - begin < 2) return;
-        //确定轴点位置
         int pivotIndex = pivotIndex(begin, end);
-        quickSort(begin, pivotIndex);
-        quickSort(pivotIndex + 1, end);
+        quickSort1(begin, pivotIndex);
+        quickSort1(pivotIndex + 1, end);
 
     }
 
@@ -63,4 +64,41 @@ public class QuickSort {
         arrays[begin] = pivot;
         return begin;
     }
+
+    public static void quickSort1(int begin, int end) {
+        if (end - begin < 2) return;
+        int pivotIndex = pivotIndex1(begin, end);
+        quickSort1(begin, pivotIndex);
+        quickSort1(pivotIndex + 1, end);
+
+    }
+
+    private static int pivotIndex1(int begin, int end) {
+        Utils.swap(arrays, begin, (int) (begin + Math.random() * (end - begin)));
+        int pivod = arrays[begin];
+        end--;
+        while (begin < end) {
+            while (begin < end) {
+                if (arrays[end] > pivod) {
+                    end--;
+                }else  {
+                    arrays[begin++] = arrays[end];
+                   break;
+                }
+            }
+            while (begin < end) {
+                if (arrays[begin] < pivod) {
+                    begin++;
+                } else {
+                    arrays[end--] = arrays[begin];
+                    break;
+                }
+            }
+        }
+        arrays[begin] = pivod;
+        return begin;
+
+    }
+
+
 }

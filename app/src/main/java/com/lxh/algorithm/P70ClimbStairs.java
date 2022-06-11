@@ -30,7 +30,7 @@ package com.lxh.algorithm;
 
 public class P70ClimbStairs {
     public static void main(String[] args) {
-        int i = climbStairs(3);
+        int i = climbStairs1(3);
         System.out.println(i);
     }
 
@@ -38,6 +38,17 @@ public class P70ClimbStairs {
         if (n == 0) {
             return 0;
         }
+        int[] dp = new int[n + 1];
+        dp[0] = 1;
+        dp[1] = 1;
+        for (int i = 2; i <= n; i++) {
+            dp[i] = dp[i - 1] + dp[i - 2];
+        }
+        return dp[n];
+    }
+
+    public static int climbStairs1(int n) {
+        if (n == 0) return 0;
         int[] dp = new int[n + 1];
         dp[0] = 1;
         dp[1] = 1;

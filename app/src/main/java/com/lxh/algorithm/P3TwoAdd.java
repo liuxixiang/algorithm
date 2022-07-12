@@ -2,9 +2,6 @@ package com.lxh.algorithm;
 
 import com.lxh.algorithm.bean.ListNode;
 
-import java.util.HashMap;
-import java.util.Map;
-
 //给你两个 非空 的链表，表示两个非负的整数。它们每位数字都是按照 逆序 的方式存储的，并且每个节点只能存储 一位 数字。
 //
 //        请你将两个数相加，并以相同形式返回一个表示和的链表。
@@ -39,7 +36,7 @@ import java.util.Map;
 //        链接：https://leetcode.cn/problems/add-two-numbers
 //        著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
 
-public class P2TwoAdd {
+public class P3TwoAdd {
     private static int[] nums = new int[]{
             9, 9, 9, 9, 9, 9, 9
     };
@@ -57,7 +54,7 @@ public class P2TwoAdd {
         ListNode prev = new ListNode(0);
         //定义一个可移动的指针，用来指向存储两个数之和的位置
         ListNode cur = prev;
-        System.out.println(prev.toString() +":"+cur.toString());
+        System.out.println(prev.toString() + ":" + cur.toString());
         ////定义一个进位数的指针，用来存储当两数之和大于10的时候，
         int carry = 0;
         while (l1 != null || l2 != null) {
@@ -89,5 +86,19 @@ public class P2TwoAdd {
         }
         return prev.next;
 
+    }
+
+    public static ListNode addTwoNumbers1(ListNode l1, ListNode l2) {
+        ListNode prev = new ListNode(0);
+        ListNode cur = prev;
+        int carry = 0;
+        while (l1 != null || l2 != null) {
+            int x = l1 != null ? l1.val : 0;
+            int y = l2 != null ? l2.val : 0;
+            int sum = x + y + carry;
+            carry = sum/10;
+
+        }
+        return prev.next;
     }
 }

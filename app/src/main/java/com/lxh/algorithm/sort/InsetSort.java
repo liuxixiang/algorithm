@@ -57,11 +57,11 @@ public class InsetSort {
     }
 
     private static void inset1(int source, int dest) {
-        int v = arrays[source];
+        int temp = arrays[source];
         for (int i = source; i > dest ; i--) {
-            arrays[i] = arrays[i-1];
+         arrays[i] = arrays[i-1];
         }
-        arrays[dest] = v;
+        arrays[dest] = temp;
     }
 
     private static int search1(int index) {

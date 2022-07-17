@@ -33,7 +33,7 @@ public class P704BinarySearch {
     };
 
     public static void main(String[] args) {
-        int search = search1(nums, 9);
+        int search = search(nums, 9);
         System.out.println(search);
     }
 
@@ -56,19 +56,18 @@ public class P704BinarySearch {
     }
 
     public static int search1(int[] arrays, int target) {
-        if(arrays == null || arrays.length == 0) return -1;
-        int begin = 0,end = arrays.length;
-        while (begin <end) {
-            int mid = (begin+end)>>1;
+        int begin = 0, end = arrays.length -1;
+        while (begin <= end) {
+            int mid = (begin + end) >> 1;
             if(target > arrays[mid]) {
                 begin = mid+1;
-            }else if(target < arrays[mid])  {
-                end = mid;
-            }else {
-                return mid;
+            }else if(target < arrays[mid]) {
+                end = mid -1;
+            }else  {
+                return  mid;
             }
         }
-        return -1;
+        return begin;
 
     }
 
